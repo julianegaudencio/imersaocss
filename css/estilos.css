@@ -1,21 +1,53 @@
+/* reset do css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
 body {
+  background-color: aliceblue;
   background-image: url('https://marketplace.canva.com/EAD297uecnM/2/0/1600w/canva-rainbow-gradient-pink-orange-and-blue-zoom-virtual-background-VwJMC37j5jQ.jpg');
   background-size: cover;
-  font-family: 'Comic Sans MS';
- 
+  font-family: 'Handlee', cursive;
+  height: 100vh;
+  background-attachment: fixed;
+}
 
+/* -- cabeçalho -- */
+
+header {
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .menu {
-  background: ivory;
+  background-color: whitesmoke;
+  border-radius: 0px 0px 30px 30px;
+  opacity: 0.8;
+  position: fixed;
+  top: 0;
+}
+
+/* -- links da navegação -- */
+.menu a {
+	color: rgb(19, 165, 165);
+  font-family: 'Handlee', cursive;
+	font-size: 0.4em;
+	text-decoration: none;
+  padding: 10px 35px;
+  display: block;
+  transition: background-color 1s, color 1s;
 }
 
 .menu ul {
   display: flex;
   justify-content: space-around;
-  padding: 15px;
-  
- 
+  padding: 10px;
 }
 
 .menu li {
@@ -23,24 +55,156 @@ body {
 }
 
 a {
-  color: #AFEEEE;
+  color: rgb(19, 165, 165);
+  font-style: bold;
   text-decoration: none;
 }
 
 a:hover {
-  background: #AFEEEE;
+  background: rgb(19, 165, 165);
+  opacity: 1.0;
   color: white;
-  padding: 13px;
+  padding: 10px 35px;
+  border-radius: 30px;
+
+}
+
+/* -- título e subtítulo -- */
+
+.site-title2,
+.title {
+  /* 0% */
+  transform: scale(0.3) translateY(50vh);
+  opacity: 0;
+
+  animation: linear 2s entrada forwards;
+}
+
+@keyframes entrada {
+  100% {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  }
 }
 
 .site-subtitle,
-.site-title {
-  color: #E0FFFF;
+.site-title,
+.site-title2 {
+  
+  opacity: 0.8;
+  padding: 10px 50px;
+  top: 10px;
+  color:  white;
   text-align: center;
 }
 
+.site-title {
+  font-size: 3.0em;
+  font-family: 'Handlee', cursive;
+  border-radius: 35px 35px 0px 0px;
+}
+
+.site-title2 {
+  font-size: 3.0em;
+  font-family: 'Handlee', cursive;
+  border-radius: 30px;
+}
+
 .site-subtitle {
-  font-style: italic;
+  font-family: 'Handlee', cursive;
+  font-size: 1.5em;
+  border-radius: 0px 0px 35px 35px;
+}
+
+/* -- sobre, contato e portfólio com as mesmas classes -- */
+.sobre,
+.contato,
+.portfolio {
+  padding: 2em;
+  min-width: 40vh;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 1200px) {
+  .sobre,
+  .contato,
+  .portfolio {
+    padding: 2em;
+    max-width: 1200px;
+  }
+}
+
+.sobre,
+.portfolio h2 {
+  font-family: 'Handlee', cursive; 
+  margin-bottom: 1.5em;
+  background-color: whitesmoke;
+  display: block;
+  bottom: 50px;
+  padding: 20px;
+  margin: 30px 90px;
+  color:  rgb(19, 165, 165);
+  text-align: center
+}
+
+.img-portfolio {
+  width: 230px;
+  height: 160px;
+  object-position: left bottom;
+  object-fit: cover;
+  border: 7px solid whitesmoke;
+  border-radius: 0% 20% 20% 20%;
+  transition: transform 500ms;
+}
+
+/* -- tranformações em 3d nas imagens do portfólio que não achei necessário mas os códigos funcionaram -- */
+/* -- um exemplo da div que tem que usar se encontra em portfolio.html*/
+
+/*.flip-card {
+  perspective: 400px;
+}
+
+.card {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 4s;
+}
+
+.flip-card:hover .card {
+  transform: translateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.card-back {
+  color: rgb(19, 165, 165);
+  background-color: whitesmoke;
+  border-radius: 20% 0% 20% 20%;
+  text-align: center;
+  width: 230px;
+  height: 160px;
+  transform: translateY(180deg);
+}*/
+
+/* -- sessão portfólio e menu -- */
+.img-portfolio:hover {
+  transform: scale(1.2);
+}
+
+.portfolio .grid {
+  display: grid;
+  gap: 2em;
+  grid-template-columns:(1, 80%);
+  margin-bottom: 20px;
+}
+
+.portfolio figure {
+  text-align: center;
 }
 
 .image {
@@ -51,4 +215,118 @@ a:hover {
   bottom: auto;
   left: 0;
   margin: auto;
+  top: 50%;
 }
+
+@media (min-width: 600px) {
+	.portfolio .grid {
+		grid-template-columns: repeat(1, 20%);
+    align-content: center;
+    min-width: 40vh;
+    justify-content: center;
+	}
+
+	.menu {
+		font-size: 2.0em;
+ }
+}
+
+@media (min-width: 800px) {
+	.portfolio .grid {
+		grid-template-columns: repeat(2, 40%);
+		align-content: center;
+    justify-content: center;
+	}
+
+	.menu {
+		font-size: 2.5em;
+ }
+}
+
+@media (min-width: 1200px) {
+	.portfolio .grid {
+		grid-template-columns: repeat(3, 25%);
+		align-content: center;
+  	justify-content: center;
+	}
+
+	.menu {
+		font-size: 3.0em;
+  }
+}
+
+/* -- sessão contato -- */
+
+.contato a {
+  
+  background-color: none;
+  opacity: 0.9;
+  color:whitesmoke;
+  padding: 0px 5px 0px 20px;
+  font-size: 4.5em;
+  padding: 5px 20px 5px 30px;
+  margin: 50px 10px;
+  display: inline;
+  transition: text-shadow 1s;
+}
+
+.contato a:active,
+.contato a:hover {
+  background: none;
+  text-shadow: 0px 0px 15px white;
+}
+
+.contato .icons {
+  text-align: center;
+}
+
+figcaption {
+  color: rgb(19, 165, 165);
+  text-shadow: 1px 1px 0px whitesmoke;
+}
+
+/* -- sessão sobre -- */
+
+.sobre {
+  background: none;
+}
+.sobre p {
+  color: white;
+  margin-bottom: 1.5em;
+  text-indent: 1.4em;
+  opacity: 1.0;
+  text-align: left;
+}
+
+.sobre a {
+  background: whitesmoke;
+  color: rgb(19, 165, 165);
+  text-decoration: underline;
+  padding: 5px;
+  border-radius: 25px;
+  transition: background-color 500ms, color 500ms;
+}
+
+.sobre a:hover {
+  background: rgb(19, 165, 165);
+  color: white;
+  text-decoration: underline;
+}
+
+.sobre .avatar {
+  float: right;
+  margin-left: 2em;
+}
+
+.sobre .avatar img {
+  width: 300px;
+  opacity: 2.0;
+  clip-path: polygon(50% 0%, 83% 12%, 100% 43%, 94% 78%, 68% 100%, 32% 100%, 6% 78%, 0% 43%, 17% 12%);
+}
+
+p.center {
+  text-align: center;
+  padding: 0ex;
+}
+
+/* fim css */
